@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  vad-test:
+    image: vad-test
+    volumes:
+      - ./voices:/voices
+    environment:
+      - PYTHONUNBUFFERED=1
