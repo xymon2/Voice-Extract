@@ -28,7 +28,8 @@ def make_voice_segments(idx, audio_file_path, ):
             continue
 
         segment_audio = audio[speech.start * 1000:speech.end * 1000]
-
+        segment_audio = segment_audio.set_channels(1)
+        
         output_file_path = f"/voices/{voice_dir}/output/{voice_dir}_{i+idx}.wav"
         segment_audio.export(output_file_path, format="wav")
     
