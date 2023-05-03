@@ -8,6 +8,8 @@ class Whisper:
 
     def __init__(self, model = "large-v1"):
         self.model =  whisper.load_model(model)
+        logging.info(f"Whisper model is loaded - {model}")
+
 
     def get_text(self,audio_file_path):
         result = self.model.transcribe(audio_file_path)

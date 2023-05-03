@@ -1,12 +1,14 @@
 version: '3'
 
 services:
-  vad-test:
-    image: vad-test
+  mlt-maker:
+    image: mlt-maker
+    # runtime: nvidia
+    # devices:
+    #   - /dev/nvidia0:/dev/nvidia0
     volumes:
       - ./voices:/voices
       - ./csv:/csv
     environment:
-      - PYTHONUNBUFFERED=1
-      - VOICES_DIR=/CHIM
-      - MODEL_NAME=CHIM
+      - TARGET_VOICE_DIR=PEARL
+      - MODEL_NAME=PEARL
