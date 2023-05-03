@@ -10,6 +10,8 @@ RUN apt-get install ffmpeg libsndfile1 -y
 # install from develop branch - pyannote-audio
 RUN pip install -qq https://github.com/pyannote/pyannote-audio/archive/refs/heads/develop.zip
 
+# install whisper
+RUN pip install git+https://github.com/Blair-Johnson/batch-whisper.git
 # # Install all pip pacakges in requirements.txt
 COPY requirements.txt /requirements.txt
 

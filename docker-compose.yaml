@@ -5,5 +5,8 @@ services:
     image: vad-test
     volumes:
       - ./voices:/voices
+      - ./csv:/csv
     environment:
       - PYTHONUNBUFFERED=1
+      - VOICES_DIR=/CHIM
+      - MODEL_NAME=CHIM

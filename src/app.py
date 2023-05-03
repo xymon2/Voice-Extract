@@ -3,8 +3,8 @@ from pydub import AudioSegment
 import logging
 import os
 
+voice_dir = os.environ["VOICE_DIR"]
 logging.basicConfig(level=logging.INFO)
-
 
 def make_voice_segments(idx, audio_file_path):
     # VAD pipeline
@@ -30,7 +30,7 @@ def make_voice_segments(idx, audio_file_path):
 
         segment_audio = audio[speech.start * 1000:speech.end * 1000]
 
-        output_file_path = f"/voices/CHIM/CHIM_{i+idx}.wav"
+        output_file_path = f"/voices/{voice_dir}/output/{voice_dir}_{i+idx}.wav"
         segment_audio.export(output_file_path, format="wav")
     logging.info(f"{len(output)} audio clips are made - {filename}")
 
