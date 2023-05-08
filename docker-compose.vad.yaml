@@ -7,17 +7,17 @@ services:
     deploy:
       resources:
         limits:
-          # cpus: '0.5'
           memory: '8G'
+    command: python3 /src/vad.py
     devices:
       - /dev/nvidia0:/dev/nvidia0
     volumes:
       - ./voices/CHIM:/voices/CHIM
-      - ./csv:/csv
+      - ./output:/output
       - ./src:/src
     environment:
       - CUDA_VISIBLE_DEVICES=0
       - TARGET_VOICE_DIR=CHIM
-      - MODEL_NAME=CHIM
+      - MODEL_NAME=CHIM_test
       - MIN_VOICE_LENGTH=3.0
-      - MAX_VOICE_LENGTH=20.0
+      - MAX_VOICE_LENGTH=10.0

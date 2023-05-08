@@ -4,20 +4,23 @@ services:
   mlt-maker:
     image: mlt-maker
     runtime: nvidia
+    container_name: mlt-stt
+    tty: true
     deploy:
       resources:
         limits:
-          # cpus: '0.5'
-          memory: '8G'
+          memory: '9G'
+    command: python3 /src/stt.py
     devices:
       - /dev/nvidia0:/dev/nvidia0
     volumes:
-      - ./voices/CHIM:/voices/CHIM
-      - ./csv:/csv
+      # - ./voices/CHIM:/voices/CHIM
       - ./src:/src
+      - ./output:/output
     environment:
       - CUDA_VISIBLE_DEVICES=0
       - TARGET_VOICE_DIR=CHIM
-      - MODEL_NAME=CHIM
+      - MODEL_NAME=CHIM_test
       - MIN_VOICE_LENGTH=3.0
       - MAX_VOICE_LENGTH=20.0
+# docker compose -f docker-compose.stt.yaml up -d && docker attach mlt-stt
