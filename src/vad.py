@@ -54,7 +54,7 @@ if __name__ == "__main__":
     logger.info("VAD is started")
     vad = VAD(min_voice_length,max_voice_length)
     paths = get_all_wav_file_in_paths(f"/voices/{voice_dir}")
-    output_dir = f"/output/dummy_{tts_model}/raw_audio/{tts_model}/{tts_model}"
+    output_dir = f"/output/{tts_model}/raw/raw_audio/{tts_model}/{tts_model}"
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)

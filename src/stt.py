@@ -53,12 +53,12 @@ if __name__ == "__main__":
 
     logger.info("STT is started")
     whisper = Whisper("large-v1")
-    audio_clips = common.get_all_wav_file_in_paths(f"/output/dummy_{tts_model}/raw_audio/{tts_model}/{tts_model}")
+    audio_clips = common.get_all_wav_file_in_paths(f"/output/{tts_model}/raw/raw_audio/{tts_model}/{tts_model}")
 
     print("Start to edit csv")
     emotion_list = ["자유", "중립", "기쁨", "친절", "분노", "짜증", "약한분노","울부짖음", "울먹임", "놀람", "공포", "속삭임", "힘없는", "취한"]
     idx = 0
-    with open(f'/output/dummy_{tts_model}/raw_samples.csv', mode='w', newline='',encoding='utf-8') as file:
+    with open(f'/output/{tts_model}/raw/raw_samples.csv', mode='w', newline='',encoding='utf-8') as file:
         writer = csv.writer(file,delimiter='|')
         writer.writerow(["speaker","text","emotion","audio_path"])
         for audio in audio_clips :
@@ -66,18 +66,21 @@ if __name__ == "__main__":
             if has_other_languages(text):
                 continue
             logger.info("%s:%s",audio,text)
-            print(f"Please listen audio: {audio}")
-            while True:
-                emotion = input("D to delete or input a emotion of this file:")
-                if emotion == "D":
-                    break
-                elif emotion in emotion_list:
-                    row =whisper.text_to_mlt_csv_format(text,emotion,tts_model,audio)
-                    writer.writerow(row)
-                    idx+=1
-                    break
-                else:
-                    print("Invalid input")
+            row =whisper.text_to_mlt_csv_format(text,"자유",tts_model,audio)
+            writer.writerow(row)
+
+            # print(f"Please listen audio: {audio}")
+            # while True:
+            #     emotion = input("D to delete or input a emotion of this file:")
+            #     if emotion == "D":
+            #         break
+            #     elif emotion in emotion_list:
+            #         row =whisper.text_to_mlt_csv_format(text,emotion,tts_model,audio)
+            #         writer.writerow(row)
+            #         idx+=1
+            #         break
+            #     else:
+            #         print("Invalid input")
 
     logger.info("%i data are written in csv", idx)
     logger.info("STT is done")
