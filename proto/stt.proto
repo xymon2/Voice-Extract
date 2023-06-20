@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package stt;
+option java_package ="com.mltmaker.library.proto.stt";
+option java_outer_classname = "STTProto";
+
+service STT {
+  rpc TranslateOne (TranslateOneRequest) returns (TranslateOneResponse) {}
+  rpc TranslateAll (TranslateAllRequest) returns (TranslateAllResponse) {}
+}
+
+message TranslateOneRequest {
+  string filepath = 1;
+}
+
+message TranslateOneResponse {
+  string text = 1;
+}
+
+message TranslateAllRequest {
+  string audioId = 1;
+  map<string, string> clipIdsAndPaths = 2;
+}
+
+message TranslateAllResponse {
+  string status = 1;
+}
+
+//message TranslateAllResponse {
+//  map<string, string> clipIdsAndText = 1;
+//}

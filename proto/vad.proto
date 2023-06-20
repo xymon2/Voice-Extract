@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package vad;
+option java_package ="com.mltmaker.library.proto.vad";
+option java_outer_classname = "VADProto";
+
+service VAD {
+    rpc Detect (DetectRequest) returns (DetectResponse) {}
+}
+
+
+message DetectRequest{
+    string filepath = 1;
+    int32 min_duration = 2;
+    int32 max_duration = 3;
+}
+
+message DetectResponse{
+    string status = 1;
+}
+

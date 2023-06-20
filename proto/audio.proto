@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package audio;
+option java_package ="com.mltmaker.library.proto.audio";
+option java_outer_classname = "AudioProto";
+
+service AudioService{
+  rpc DownloadYoutube (DownloadYoutubeRequest) returns (DownloadYoutubeResponse) {}
+}
+
+message DownloadYoutubeRequest{
+  string link = 1;
+}
+
+message DownloadYoutubeResponse{
+  string audioId = 1;
+}
+
+//message DownloadYoutubeResponse{
+//  string audioId = 1;
+//  string filepath = 2;
+//  string creator = 3;
+//  string name = 4;
+//}
+
