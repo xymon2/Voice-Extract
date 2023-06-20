@@ -15,6 +15,7 @@ class Whisper:
         self.logger.info("Whisper model is loaded - %s", model)
 
 
+
     def get_text(self,audio_path):
         # for audio file paht
         result = self.model.transcribe(audio_path)
