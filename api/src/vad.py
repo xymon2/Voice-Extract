@@ -10,7 +10,7 @@ from logdeco import httplog
 logger = logging.getLogger("sanic.root")
 
 S3_BUCKET = "mltmaker"
-VAD_ADDRESS = "13.125.106.160:8001"
+VAD_ADDRESS = "~~~"
 
 class VadResource(Resource):
     @httplog

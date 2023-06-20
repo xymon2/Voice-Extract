@@ -9,21 +9,21 @@ import io.grpc.ManagedChannelBuilder
 class GrpcConfiguration {
     @Bean
     fun vadChannel(): ManagedChannel {
-        return ManagedChannelBuilder.forAddress("15.165.161.1", 8001)
+        return ManagedChannelBuilder.forAddress("~~", 8001)
             .usePlaintext()
             .build()
     }
 
     @Bean
     fun sttChannel(): ManagedChannel {
-        return ManagedChannelBuilder.forAddress("15.165.161.1", 8002)
+        return ManagedChannelBuilder.forAddress("1~~", 8002)
             .usePlaintext()
             .build()
     }
 
     @Bean
     fun audioDownloaderChannel(): ManagedChannel {
-        return ManagedChannelBuilder.forAddress("15.165.161.1", 8003)
+        return ManagedChannelBuilder.forAddress("~~", 8003)
             .usePlaintext()
             .build()
     }
